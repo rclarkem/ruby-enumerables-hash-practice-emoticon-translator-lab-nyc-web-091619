@@ -1,9 +1,9 @@
 # require modules here
 
 def load_library(file)
- new_hash = {:get_meaning => {}, :get_emoticon => {}}
-	require 'yaml'
+  require 'yaml'
   hashObj = YAML.load_file(file)
+new_hash = {:get_meaning => {}, :get_emoticon => {}}
 hashObj.each do |word, meaning_arr|
 # p "word: #{word} emoticon: #{meaning_arr[0]}"
 new_hash[:get_meaning][meaning_arr[1]] = word
