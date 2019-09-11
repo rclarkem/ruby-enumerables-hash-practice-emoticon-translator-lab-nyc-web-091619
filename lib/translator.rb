@@ -6,10 +6,8 @@ def load_library(file)
   hashObj = YAML.load_file(file)
 hashObj.each do |word, meaning_arr|
 # p "word: #{word} emoticon: #{meaning_arr[0]}"
-if !new_hash[:get_meaning][meaning_arr[1]]
 new_hash[:get_meaning][meaning_arr[1]] = word
 end
-if !new_hash[:get_emoticon][meaning_arr[0]]
 new_hash[:get_emoticon][meaning_arr[0]] = meaning_arr[1]
 end
 end
@@ -18,7 +16,6 @@ end
 
 def get_japanese_emoticon(file, emoticon)
 emojis = load_library(file)
-# p "NEW JAP"
  keyed = emojis[:get_meaning][emoticon]
 # p keyed #=> grinning
 # p emojis[:get_emoticon][emoticon]
@@ -26,6 +23,14 @@ emoji_translations = {keyed => emojis[:get_emoticon][emoticon]}
 emoji_translations[keyed] || "Sorry, that emoticon was not found"
 end
 
+=begin
+def get_japanese_emoticon(file, emoticon)
+emojis = load_library(file)
+ english_word_meaning = emojis[:get_emoticon][emoticon]
+ p english_word_meaning
+english_word_meaning
+end
+=end
 
 def get_english_meaning(file, emoticon)
 emojis = load_library(file)
